@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11232" systemVersion="15G31" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Classes" representedClassName=".Classes" syncable="YES">
+        <attribute name="gradeName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="numberOfStudents" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="classTeacher" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="ClassTeacher" inverseName="claases" inverseEntity="ClassTeacher" syncable="YES"/>
+        <relationship name="school" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="School" inverseName="classes" inverseEntity="School" syncable="YES"/>
+        <relationship name="students" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Students" inverseName="grade" inverseEntity="Students" syncable="YES"/>
+        <relationship name="teachers" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Teachers" inverseName="classes" inverseEntity="Teachers" syncable="YES"/>
+    </entity>
+    <entity name="ClassTeacher" representedClassName=".ClassTeacher" syncable="YES">
+        <attribute name="iD" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="claases" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Classes" inverseName="classTeacher" inverseEntity="Classes" syncable="YES"/>
+        <relationship name="school" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="School" inverseName="classTeacher" inverseEntity="School" syncable="YES"/>
+        <relationship name="students" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Students" inverseName="classTeacher" inverseEntity="Students" syncable="YES"/>
+    </entity>
+    <entity name="School" representedClassName=".School" syncable="YES">
+        <attribute name="addressLine1" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="cityName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="pinCode" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="propaganda" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="schoolID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="schoolName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="stateName" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="classes" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Classes" inverseName="school" inverseEntity="Classes" syncable="YES"/>
+        <relationship name="classTeacher" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ClassTeacher" inverseName="school" inverseEntity="ClassTeacher" syncable="YES"/>
+        <relationship name="students" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Students" inverseName="school" inverseEntity="Students" syncable="YES"/>
+        <relationship name="teachers" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Teachers" inverseName="school" inverseEntity="Teachers" syncable="YES"/>
+    </entity>
+    <entity name="Students" representedClassName=".Students" syncable="YES">
+        <attribute name="classGrade" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="studentName" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="classTeacher" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ClassTeacher" inverseName="students" inverseEntity="ClassTeacher" syncable="YES"/>
+        <relationship name="grade" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Classes" inverseName="students" inverseEntity="Classes" syncable="YES"/>
+        <relationship name="school" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="School" inverseName="students" inverseEntity="School" syncable="YES"/>
+        <relationship name="teachers" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Teachers" inverseName="students" inverseEntity="Teachers" syncable="YES"/>
+    </entity>
+    <entity name="Teachers" representedClassName=".Teachers" syncable="YES">
+        <attribute name="iD" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="classes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Classes" inverseName="teachers" inverseEntity="Classes" syncable="YES"/>
+        <relationship name="school" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="School" inverseName="teachers" inverseEntity="School" syncable="YES"/>
+        <relationship name="students" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Students" inverseName="teachers" inverseEntity="Students" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Classes" positionX="162" positionY="-163" width="128" height="135"/>
+        <element name="ClassTeacher" positionX="-524" positionY="-172" width="128" height="118"/>
+        <element name="School" positionX="-216" positionY="-234" width="128" height="208"/>
+        <element name="Students" positionX="-612" positionY="198" width="128" height="133"/>
+        <element name="Teachers" positionX="-387" positionY="90" width="128" height="120"/>
+    </elements>
+</model>
